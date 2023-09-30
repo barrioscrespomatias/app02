@@ -3,8 +3,8 @@
   import { CapacitorConfig } from '@capacitor/cli';
 
   const config: CapacitorConfig = {
-    appId: 'com.example.app',
-    appName: 'primeraApp',
+    appId: 'com.app02.app',
+    appName: 'app02',
     webDir: 'www',
     server: {
       androidScheme: 'https'
@@ -30,3 +30,4 @@
   };
   
   export default config;
+  
