@@ -1,1 +1,50 @@
-<app-menu></app-menu>
+<body class="background">
+  <ion-content>
+    <!-- Selector de Idioma -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="globe"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="seleccionarIdioma('espanol')">
+          <img src="../../../assets/images/flag/espana.png" alt="">
+        </ion-fab-button>
+        <ion-fab-button (click)="seleccionarIdioma('ingles')">
+          <img src="../../../assets/images/flag/reino-unido.png" alt="">
+        </ion-fab-button>
+        <ion-fab-button (click)="seleccionarIdioma('portugues')">          
+          <img src="../../../assets/images/flag/brasil.png" alt="">
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+    <!-- Selector de Elemento -->
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="color-palette"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="seleccionarElemento('colores')">
+          <ion-icon name="color-fill"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="seleccionarElemento('numeros')">
+          <ion-icon name="calculator"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="seleccionarElemento('animales')">
+          <ion-icon name="paw"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+    <!-- Contenedor de Juego -->
+    <div class="game-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let asset of assets[elemento]">
+            <img [src]="assetBasePath + imagePath + asset.imagePath" [alt]="asset.name" (click)="reproducirSonido(elemento, asset.name, idioma)">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+</body>

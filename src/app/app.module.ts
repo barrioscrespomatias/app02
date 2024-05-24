@@ -14,9 +14,10 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImagenSonidoComponent } from './components/imagen-sonido/imagen-sonido.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, LoginComponent, HomeComponent, ToastComponent],
+  declarations: [AppComponent, MenuComponent, LoginComponent, HomeComponent, ToastComponent, ImagenSonidoComponent],
   imports: [
     BrowserModule,
      IonicModule.forRoot(), 
@@ -28,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    MenuComponent, LoginComponent,HomeComponent,ToastComponent // Agrega el componente en la sección de exports
+    MenuComponent, LoginComponent,HomeComponent,ToastComponent, ImagenSonidoComponent // Agrega el componente en la sección de exports
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment }

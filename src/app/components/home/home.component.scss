@@ -1,0 +1,66 @@
+ion-content {
+  --background: #ffd385;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  padding: 10% 0; /* Margen del 10% arriba y abajo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Para incluir el padding en el tamaño total */
+}
+
+ion-grid {
+  width: 100%;
+  height: 100%; /* Ajusta según sea necesario */
+  padding: 0;
+  margin: 0;
+}
+
+ion-row {
+  width: 100%;
+  height: 100%;
+}
+
+ion-col {
+  width: 100%;
+  height: 30%; /* Aproximadamente el 20% del alto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-fab-button {
+  position: relative;
+}
+
+.fab-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px; /* Ajusta el tamaño del texto según sea necesario */
+  color: black; /* Asegúrate de que el color del texto sea visible */
+  pointer-events: none; /* Asegura que el texto no interfiera con los clics */
+}
+
+ion-fab-button ion-icon {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
