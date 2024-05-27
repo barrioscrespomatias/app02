@@ -1,66 +1,64 @@
-ion-content {
-  --background: #ffd385;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 0;
+:root {
+  --primary-color: #bfebf4;
+  --secondary-color: #FD3B4A;
+}
+
+body, ion-content {
+  height: 100vh; /* Make sure the content takes the full viewport height */
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-header {
+  flex-shrink: 0;
+}
+
+ion-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
 }
 
 .game-container {
-  width: 100%;
-  height: 100%;
-  padding: 10% 0; /* Margen del 10% arriba y abajo */
+  flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
-  box-sizing: border-box; /* Para incluir el padding en el tamaño total */
+  justify-content: center;
+  width: 100%;
 }
 
 ion-grid {
   width: 100%;
-  height: 100%; /* Ajusta según sea necesario */
-  padding: 0;
-  margin: 0;
-}
-
-ion-row {
-  width: 100%;
   height: 100%;
-}
-
-ion-col {
-  width: 100%;
-  height: 30%; /* Aproximadamente el 20% del alto */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-ion-col img {
+ion-row {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ion-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+ion-fab {
+  z-index: 10;
 }
 
 ion-fab-button {
-  position: relative;
+  --background: #6E94A8;
 }
-
-.fab-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10px; /* Ajusta el tamaño del texto según sea necesario */
-  color: black; /* Asegúrate de que el color del texto sea visible */
-  pointer-events: none; /* Asegura que el texto no interfiera con los clics */
-}
-
-ion-fab-button ion-icon {
-  margin-right: 5px; /* Espacio entre el icono y el texto */
-}
-

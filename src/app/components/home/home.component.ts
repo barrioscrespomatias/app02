@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+
 
 interface Sound {
   [category: string]: {
@@ -24,6 +27,10 @@ export class HomeComponent implements OnInit {
   assetBasePath: string = 'assets/';
   audioPath: string = 'audios/';
   imagePath: string = 'images/';
+
+  isVertical = false;
+
+  //#region Assets configuration
 
   assets: { [category: string]: Asset[] } = {
     animales: [
@@ -151,9 +158,24 @@ export class HomeComponent implements OnInit {
     },
   };
 
-  constructor() {}
+  //#endregion
 
-  ngOnInit() {}
+  constructor(private navCtrl: NavController, private breakpointObserver: BreakpointObserver, private destroyRef: DestroyRef) {
+
+    breakpointObserver.observe([
+      Breakpoints.HandsetLandscape,
+      // Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if (result.matches)
+        this.isVertical = false;      
+      else
+        this.isVertical = true;  
+    });
+  }
+
+  ngOnInit() {
+    
+  }
 
   seleccionarIdioma(idiomaSeleccionado: string) {
     this.idioma = idiomaSeleccionado;
@@ -174,5 +196,9 @@ export class HomeComponent implements OnInit {
 
   obtenerRutaImagen(categoria: string, item: string): string {
     return `${this.assetBasePath}${this.imagePath}${this.assets[categoria]?.find(i => i.name === item)?.imagePath}`;
+  }
+
+  navigateTo(section: string) {
+    this.navCtrl.navigateForward(`/${section}`);
   }
 }

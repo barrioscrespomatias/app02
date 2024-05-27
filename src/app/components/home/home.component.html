@@ -1,4 +1,14 @@
 <body class="background">
+  <ion-header>
+    <ion-toolbar>
+      <ion-segment value="all">
+        <ion-segment-button (click)="navigateTo('login')" value="favorites">
+          <ion-label>Cerrar sesión</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-content>
     <!-- Selector de Idioma -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -6,13 +16,27 @@
         <ion-icon name="globe"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="top">
-        <ion-fab-button (click)="seleccionarIdioma('espanol')">
+        <ion-fab-button (click)="seleccionarIdioma('espanol')" *ngIf="idioma === 'espanol'" style="border: 3px black solid; border-radius: 50%;">
           <img src="../../../assets/images/flag/espana.png" alt="">
         </ion-fab-button>
-        <ion-fab-button (click)="seleccionarIdioma('ingles')">
+
+        <ion-fab-button (click)="seleccionarIdioma('espanol')" *ngIf="idioma !== 'espanol'">
+          <img src="../../../assets/images/flag/espana.png" alt="">
+        </ion-fab-button>
+
+        <ion-fab-button (click)="seleccionarIdioma('ingles')" *ngIf="idioma === 'ingles'" style="border: 3px black solid; border-radius: 50%;">
           <img src="../../../assets/images/flag/reino-unido.png" alt="">
         </ion-fab-button>
-        <ion-fab-button (click)="seleccionarIdioma('portugues')">          
+
+        <ion-fab-button (click)="seleccionarIdioma('ingles')" *ngIf="idioma !== 'ingles'">
+          <img src="../../../assets/images/flag/reino-unido.png" alt="">
+        </ion-fab-button>
+
+        <ion-fab-button (click)="seleccionarIdioma('portugues')" *ngIf="idioma === 'portugues'" style="border: 3px black solid; border-radius: 50%;">          
+          <img src="../../../assets/images/flag/brasil.png" alt="">
+        </ion-fab-button>
+
+        <ion-fab-button (click)="seleccionarIdioma('portugues')" *ngIf="idioma !== 'portugues'">          
           <img src="../../../assets/images/flag/brasil.png" alt="">
         </ion-fab-button>
       </ion-fab-list>
@@ -21,27 +45,51 @@
     <!-- Selector de Elemento -->
     <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button>
-        <ion-icon name="color-palette"></ion-icon>
+        <ion-icon name="game-controller"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="top">
-        <ion-fab-button (click)="seleccionarElemento('colores')">
+        <ion-fab-button (click)="seleccionarElemento('colores')" *ngIf="elemento === 'colores'" style="border: 3px black solid; border-radius: 50%;">
           <ion-icon name="color-fill"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button (click)="seleccionarElemento('numeros')">
+
+        <ion-fab-button (click)="seleccionarElemento('colores')" *ngIf="elemento !== 'colores'">
+          <ion-icon name="color-fill"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button (click)="seleccionarElemento('numeros')" *ngIf="elemento === 'numeros'" style="border: 3px black solid; border-radius: 50%;">
           <ion-icon name="calculator"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button (click)="seleccionarElemento('animales')">
+
+        <ion-fab-button (click)="seleccionarElemento('numeros')"  *ngIf="elemento !== 'numeros'">
+          <ion-icon name="calculator"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button (click)="seleccionarElemento('animales')"  *ngIf="elemento === 'animales'" style="border: 3px black solid; border-radius: 50%;">
+          <ion-icon name="paw"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button (click)="seleccionarElemento('animales')"  *ngIf="elemento !== 'animales'" >
           <ion-icon name="paw"></ion-icon>
         </ion-fab-button>
       </ion-fab-list>
     </ion-fab>
 
     <!-- Contenedor de Juego -->
-    <div class="game-container">
+    <div class="game-container" *ngIf="isVertical">
       <ion-grid>
         <ion-row>
           <ion-col size="6" *ngFor="let asset of assets[elemento]">
             <img [src]="assetBasePath + imagePath + asset.imagePath" [alt]="asset.name" (click)="reproducirSonido(elemento, asset.name, idioma)">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="!isVertical">
+      <ion-grid>
+        <ion-row >
+          <ion-col size="4" *ngFor="let asset of assets[elemento]" style="height: 150px !important;">
+            <img [src]="assetBasePath + imagePath + asset.imagePath" [alt]="asset.name" (click)="reproducirSonido(elemento, asset.name, idioma)" height="150px">
           </ion-col>
         </ion-row>
       </ion-grid>

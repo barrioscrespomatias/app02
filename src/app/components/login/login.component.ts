@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AngularFireService } from '../../services/angular-fire.service';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,18 @@ import { AngularFireService } from '../../services/angular-fire.service';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   public isLogged: boolean = false;
+  isVertical = false;
 
-  constructor(public angularFireService: AngularFireService) {
+  constructor(public angularFireService: AngularFireService, private breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe([
+      Breakpoints.HandsetLandscape,
+      // Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if (result.matches)
+        this.isVertical = false;      
+      else
+        this.isVertical = true;  
+    });
     this.checkLoggedIn();
   }
 
