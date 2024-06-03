@@ -9,6 +9,11 @@ body, ion-content {
   padding: 0;
   display: flex;
   flex-direction: column;
+  
+}
+
+ion-content{
+  --background: #D99C64;
 }
 
 ion-header {
@@ -61,4 +66,12 @@ ion-fab {
 
 ion-fab-button {
   --background: #6E94A8;
+}
+
+ion-icon {
+  font-size: 64px;
+}
+
+ion-toolbar{
+  --background: #FFD385;
 }

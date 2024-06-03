@@ -1,9 +1,10 @@
-<body class="background">
+
   <ion-header>
     <ion-toolbar>
       <ion-segment value="all">
         <ion-segment-button (click)="navigateTo('')" value="favorites">
-          <ion-label>Cerrar sesión</ion-label>
+          <!-- <ion-label>Cerrar sesión</ion-label> -->
+          <ion-label><img src="../../../assets/images/cerrar-sesion.png" alt="" height="30px"></ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
@@ -13,7 +14,10 @@
     <!-- Selector de Idioma -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button>
-        <ion-icon name="globe"></ion-icon>
+        <!-- <ion-icon name="globe"></ion-icon> -->
+        <ion-label  *ngIf="idioma === 'espanol'"><img src="../../../assets/images/flag/espana.png" alt="" height="55px" style="margin-top: 5px; border: 3px black solid; border-radius: 50%"></ion-label>
+        <ion-label  *ngIf="idioma === 'ingles'"><img src="../../../assets/images/flag/reino-unido.png" alt="" height="55px" style="margin-top: 5px; border: 3px black solid; border-radius: 50%"></ion-label>
+        <ion-label  *ngIf="idioma === 'portugues'"><img src="../../../assets/images/flag/brasil.png" alt="" height="55px" style="margin-top: 5px; border: 3px black solid; border-radius: 50%"></ion-label>
       </ion-fab-button>
       <ion-fab-list side="top">
         <ion-fab-button (click)="seleccionarIdioma('espanol')" *ngIf="idioma === 'espanol'" style="border: 3px black solid; border-radius: 50%;">
@@ -45,31 +49,33 @@
     <!-- Selector de Elemento -->
     <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button>
-        <ion-icon name="game-controller"></ion-icon>
+        <ion-label  *ngIf="elemento === 'colores'"><img src="../../../assets/images/colores.png" alt="" height="55px" style="margin-top: 5px; border: 3px black solid; border-radius: 50%"></ion-label>
+        <ion-label  *ngIf="elemento === 'numeros'"><img src="../../../assets/images/numeros.png" alt="" height="55px" style="margin-top: 5px; border: 3px black solid; border-radius: 50%"></ion-label>
+        <ion-label  *ngIf="elemento === 'animales'"><img src="../../../assets/images/animales.png" alt="" height="55px" style="margin-top: 5px; border: 3px black solid; border-radius: 50%"></ion-label>
       </ion-fab-button>
       <ion-fab-list side="top">
         <ion-fab-button (click)="seleccionarElemento('colores')" *ngIf="elemento === 'colores'" style="border: 3px black solid; border-radius: 50%;">
-          <ion-icon name="color-fill"></ion-icon>
+          <img src="../../../assets/images/colores.png" alt="">
         </ion-fab-button>
 
         <ion-fab-button (click)="seleccionarElemento('colores')" *ngIf="elemento !== 'colores'">
-          <ion-icon name="color-fill"></ion-icon>
+          <img src="../../../assets/images/colores.png" alt="">
         </ion-fab-button>
 
         <ion-fab-button (click)="seleccionarElemento('numeros')" *ngIf="elemento === 'numeros'" style="border: 3px black solid; border-radius: 50%;">
-          <ion-icon name="calculator"></ion-icon>
+          <img src="../../../assets/images/numeros.png" alt="">
         </ion-fab-button>
 
         <ion-fab-button (click)="seleccionarElemento('numeros')"  *ngIf="elemento !== 'numeros'">
-          <ion-icon name="calculator"></ion-icon>
+          <img src="../../../assets/images/numeros.png" alt="">
         </ion-fab-button>
 
         <ion-fab-button (click)="seleccionarElemento('animales')"  *ngIf="elemento === 'animales'" style="border: 3px black solid; border-radius: 50%;">
-          <ion-icon name="paw"></ion-icon>
+          <img src="../../../assets/images/animales.png" alt="">
         </ion-fab-button>
 
         <ion-fab-button (click)="seleccionarElemento('animales')"  *ngIf="elemento !== 'animales'" >
-          <ion-icon name="paw"></ion-icon>
+          <img src="../../../assets/images/animales.png" alt="">
         </ion-fab-button>
       </ion-fab-list>
     </ion-fab>
@@ -95,4 +101,3 @@
       </ion-grid>
     </div>
   </ion-content>
-</body>
